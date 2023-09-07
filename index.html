@@ -5,8 +5,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
+
+<!----Calls for arcgis JS file and CSS library per lab 1 instructions-->
+<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.25/"></script>
+
+<!--Calling for Map and Mapview modules-->
+<script> require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU;   
+}); 
+const map = new Map({ 
+ basemap: "arcgis-topographic" // Basemap layer service 
+ });
+
+ const view = new MapView({
+ map: map,
+ center: [--92.04494722222222, 30.225002777777775], // Longitude, latitude
+ zoom: 13, // Zoom level
+ container: "viewDiv" // Div element
+});
+ </script>
+
+
+
+<!---CSS for fullscreen-->
+
+<style>  html,  body,  #viewDiv {  padding: 0;  margin: 0;  height: 100%;  width: 100%;  }  </style> 
+
+
 </head>
 <body>
-  <h1>Hello, world! I am using GIT!</h1>
+  <!---Div to display the map-->
+  <div id="viewDiv"></div> 
 </body>
 </html>
