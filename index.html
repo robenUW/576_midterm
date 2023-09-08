@@ -19,9 +19,8 @@ require([
   "esri/config", 
   "esri/Map", 
   "esri/views/MapView",
-  "esri/widgets/Expand",
   "esri/widgets/BasemapGallery"
-], function (esriConfig, Map, MapView,Expand,BasemapGallery) {
+], function (esriConfig, Map, MapView,BasemapGallery) {
   
   esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
@@ -41,15 +40,9 @@ const basemapGallery = new BasemapGallery({
   container: "viewDiv" // Div element
 });
 
-const bgExpand = new Expand({
-  view: view,
-  content: basemapGallery
-});
-
 view.ui.add(basemapGallery, {
   position: "top-right"
 
-view.ui.add(bgExpand, "top-right")
 
 });
 
