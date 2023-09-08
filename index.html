@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello, world!</title>
+  <title>Lab 1 Map!</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
@@ -13,13 +13,15 @@
 <!--Calling for Map and Mapview modules-->
 
 <script> 
-    
+
+
 require([
   "esri/config", 
   "esri/Map", 
   "esri/views/MapView",
   "esri/widgets/BasemapGallery"
 ], function (esriConfig, Map, MapView,BasemapGallery) {
+  
   esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
  basemap: "arcgis-imagery" // Basemap layer 
@@ -36,14 +38,13 @@ const view = new MapView({
 
 const basemapGallery = new BasemapGallery({
     view: view
-    source: [Basemap.fromId("topo-vector"), Basemap.fromId("hybrid")
 });
     
 
 view.ui.add(basemapGallery, "top-right"); // Add to the view    
-    
-    
+  
 });
+
  </script>
 
 <!---CSS for fullscreen-->
