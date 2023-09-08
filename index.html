@@ -40,31 +40,8 @@ const view = new MapView({
 const basemapGallery = new BasemapGallery({
   view: view,
   container: "viewDiv" // Div element
-});
-
-
-const bgExpand = new Expand({
-  view: view,
-  content: basemapGallery
 
 });
-
-view.ui.add(bgExpand, "top-right");
-
-
-
-basemapGallery.watch("activeBasemap", () => {
-          const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
-
-          if (mobileSize) {
-            bgExpand.collapse();
-          }
-        });
-
-        // Add the expand instance to the ui
-
-        view.ui.add(bgExpand, "top-right");
-      });
 
  </script>
 
