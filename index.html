@@ -19,33 +19,21 @@ require([
   "esri/config", 
   "esri/Map", 
   "esri/views/MapView",
-  "esri/widgets/BasemapGallery"
-], function (esriConfig, Map, MapView,BasemapGallery) {
+], function (esriConfig, Map, MapView) {
   
   esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
-                      
-});
 
 const map = new Map({ 
  basemap: "arcgis-imagery" // Basemap layer 
-    });
+});
 
 
 const view = new MapView({
- map: map,
- center: [-92.044, 30.2250], // Longitude, latitude
- zoom: 18, // Zoom level
- container: "viewDiv" // Div element
-});
-
-
-const basemapGallery = new BasemapGallery({
-    view: view
-});
-    
-
-view.ui.add(basemapGallery, "top-right"); // Add to the view    
-  
+      map: map,
+      center: [-92.044, 30.2250], // Longitude, latitude
+      zoom: 18, // Zoom level
+      container: "viewDiv" // Div element
+    });
 });
 
  </script>
