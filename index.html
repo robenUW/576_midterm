@@ -10,17 +10,23 @@
 <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
 <script src="https://js.arcgis.com/4.25/"></script>
 
+<!---css to make full screen map-->
+<style>  
+  html,  
+  body,  
+  #viewDiv {  
+    padding: 0;  
+    margin: 0;  
+    height: 100%;  
+    width: 100%;  
+  }  
+  
+</style> 
 <!--Calling for Map and Mapview modules-->
 
 <script> 
 
-require([
-  "esri/config", 
-  "esri/Map", 
-  "esri/views/MapView",
-  "esri/widgets/BasemapGallery",
-  "esri/widgets/Locate"
-], function (esriConfig, Map, MapView,BasemapGallery,Locate) {
+require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate"], function (esriConfig, Map, MapView,BasemapGallery,Locate) {
   
 esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
@@ -55,11 +61,6 @@ view.ui.add(locateWidget, "top-left");
 
 });
  </script>
-
-<!---CSS for fullscreen-->
-
-<style>  html,  body,  #viewDiv {  padding: 0;  margin: 0;  height: 100%;  width: 100%;  }  </style> 
-
 
 </head>
 <body>
