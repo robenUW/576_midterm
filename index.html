@@ -20,7 +20,7 @@ require([
   "esri/Map", 
   "esri/views/MapView",
   "esri/widgets/BasemapGallery"
-], function (esriConfig, Map, MapView,basemapGallery) {
+], function (esriConfig, Map, MapView,BasemapGallery) {
   
   esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 
@@ -41,8 +41,8 @@ const basemapGallery = new BasemapGallery({
   container: "viewDiv" // Div element
 });
 
-view.ui.add(basemapGallery, {
-  position: "top-right"
+view.ui.add(basemapGallery, "top-right");
+
 });
 
  </script>
