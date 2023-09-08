@@ -43,6 +43,14 @@ const basemapGallery = new BasemapGallery({
 
 view.ui.add(basemapGallery, "top-right");
 
+const bgExpand = new Expand({
+  view: view,
+  content: basemapGallery
+
+});
+
+view.ui.add(bgExpand, "top-right");
+
 });
 
  </script>
