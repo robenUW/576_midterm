@@ -13,12 +13,13 @@
 <!--Calling for Map and Mapview modules-->
 
 <script> 
+    
 require([
   "esri/config", 
   "esri/Map", 
   "esri/views/MapView",
-  "esri/widgets/BasemapGallery"], 
-    (esriConfig, Map, MapView,BasemapGallery) => {
+  "esri/widgets/BasemapGallery"
+], function (esriConfig, Map, MapView,BasemapGallery) {
   esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
  basemap: "arcgis-imagery" // Basemap layer 
