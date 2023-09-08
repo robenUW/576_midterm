@@ -26,7 +26,7 @@
 
 <script> 
 
-require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate"], function (esriConfig, Map, MapView,BasemapGallery,Locate) {
+require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate", "esri/widgets/Search"], function (esriConfig, Map, MapView,BasemapGallery,Locate,Search) {
   
 esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
@@ -57,7 +57,18 @@ const locateBtn = new Locate({
         view.ui.add(locateBtn, {
           position: "top-left"
         });    
-    
+   
+const searchWidget = new Search({
+  view: view
+});
+// Adds the search widget below other elements in
+// the top left corner of the view
+view.ui.add(searchWidget, {
+  position: "top-right",
+  index: 2
+});        
+
+
 });
  </script>
 
