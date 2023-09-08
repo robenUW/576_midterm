@@ -41,18 +41,21 @@ const basemapGallery = new BasemapGallery({
   container: "viewDiv" // Div element
 });
 
-const locateBtn = new Locate({
-          view: view
-        });
-
-
 view.ui.add(basemapGallery, {
   position: "top-right"
+
 });
+
+const locateBtn = new Locate({
+  view: view,
+  container: "viewDiv" // Div element
+});
+
 view.ui.add(locateBtn, {
   position: "top-left"
 
 });
+
 
 });
 
