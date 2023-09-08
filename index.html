@@ -37,21 +37,21 @@ const view = new MapView({
     });
 
 const basemapGallery = new BasemapGallery({
-  view: view,
+  view: MapView,
   container: "viewDiv" // Div element
   });
 
-          view.ui.add(basemapGallery, {
-          position: "top-right"
-          });
+      MapView.ui.add(basemapGallery, {
+      position: "top-right"
+      });
 
 const locateBtn = new Locate({
-  view: view
+  view: MapView
   });
        
 // Add the locate widget to the top left corner of the view
-      view.ui.add(locateBtn, {
-        position: "top-left"
+      MapView.ui.add(locateBtn, {
+      position: "bottom-left"
       });
 
 });
