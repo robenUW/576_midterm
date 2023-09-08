@@ -23,36 +23,36 @@ require([
   "esri/widgets/Locate"
 ], function (esriConfig, Map, MapView,BasemapGallery,Locate) {
   
-  esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
+esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
  basemap: "arcgis-imagery" // Basemap layer 
 });
 
 
-const view = new MapView({
-      map: map,
-      center: [-92.044, 30.2250], // Longitude, latitude
-      zoom: 18, // Zoom level
-      container: "viewDiv" // Div element
-    });
+          const view = new MapView({
+                map: map,
+                center: [-92.044, 30.2250], // Longitude, latitude
+                zoom: 18, // Zoom level
+                container: "viewDiv" // Div element
+              });
 
-const basemapGallery = new BasemapGallery({
-  view: MapView,
-  container: "viewDiv" // Div element
-  });
+          const basemapGallery = new BasemapGallery({
+            view: view,
+            container: "viewDiv" // Div element
+            });
 
-      MapView.ui.add(basemapGallery, {
-      position: "top-right"
-      });
+                view.ui.add(basemapGallery, {
+                position: "top-right"
+                });
 
-const locateBtn = new Locate({
-  view: MapView
-  });
-       
-// Add the locate widget to the top left corner of the view
-      MapView.ui.add(locateBtn, {
-      position: "bottom-left"
-      });
+          const locateBtn = new Locate({
+            view: view
+            });
+                
+          // Add the locate widget to the top left corner of the view
+                view.ui.add(locateBtn, {
+                position: "bottom-left"
+                });
 
 });
  </script>
