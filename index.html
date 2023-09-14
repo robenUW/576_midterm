@@ -180,7 +180,11 @@ const polylineGraphic = new Graphic({
 //creates polygon
 const polygon = {
   type: "polygon",
-  rings: [[-92.040902, 30.204296],[-92.042770, 30.203348][-92.039832, 30.199865],[-92.037446, 30.200740]]
+  rings: 
+  [[-92.040902, 30.204296],
+  [-92.042770, 30.203348],
+  [-92.039832, 30.199865],
+  [-92.037446, 30.200740]]
 };
 
 //defines polygon style
@@ -203,7 +207,6 @@ const polygonGraphic = new Graphic({
 //adding the point, line and polygon to the graphics layer
 graphicsLayer.add(pointGraphic);
 graphicsLayer.add(polylineGraphic);
-graphicsLayer.add(polygonGraphic);
 
 
 });
