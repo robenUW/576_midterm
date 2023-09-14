@@ -101,9 +101,9 @@ const simpleMarkerSymbol = {
   type: "simple-marker",
   style: "diamond",
   size:  "15px",
-  color: [0, 255, 255],  // Color of blues rock
+  color: [0, 255, 255],  
   outline: {  
-    color: [102, 0, 0], // White  
+    color: [102, 0, 0], 
     width: 2
   }  
 };
@@ -176,9 +176,38 @@ const polylineGraphic = new Graphic({
     symbol: simpleLineSymbol
 });
 
-//adding the point and the line to the graphics layer
-graphicsLayer.add(pointGraphic);
-graphicsLayer.add(polylineGraphic);
+
+//creates polygon
+const polygon = {
+  type: "polygon",
+  rings: [[-92.040902, 30.204296],[-92.042770, 30.203348][-92.039832, 30.199865],[-92.037446, 30.200740]]
+};
+
+//defines polygon style
+const polygonstyle = {
+  type: "simple-fill",
+  color: [0, 255, 255]
+  outline: {
+    color:  [102, 0, 0],
+    width: 1
+  }
+};
+
+//add polygon to new graphic
+
+const polygongraphic = new Graphic({
+  geometry: polygon,
+  symbol: polygonstyle
+});
+
+
+
+
+
+
+//adding the point, line and polygon to the graphics layer
+view.graphics.addMany([pointGraphic,polylineGraphic,polygongraphic]);
+
 });
  </script>
 
