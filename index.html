@@ -208,14 +208,14 @@ const polygonGraphic = new Graphic({
 view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 
-const int2030SLR = new FeatureLayer({
+const SLR = new FeatureLayer({
   // URL to the service
-  url: https://tiledimageservices3.arcgis.com/0Fs3HcaFfvzXvm7w/arcgis/rest/services/CMRA_SLR_Inundation_RCP45_Early_2030/ImageServer
+  url: "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/slr_1ft/MapServer?cacheKey=aaf1a7b0e61981b4"
 });
 
 
 //add rest service to map
-map.add(into2030SLR);
+map.add(SLR);
 
 });
  </script>
