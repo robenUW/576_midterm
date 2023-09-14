@@ -100,17 +100,42 @@ const point = { //Create a point
 const simpleMarkerSymbol = {  
   type: "simple-marker",
   style: "diamond",
-  size:  "13px",
+  size:  "15px",
   color: [0, 255, 255],  // Color of blues rock
   outline: {  
     color: [102, 0, 0], // White  
     width: 2
   }  
 };
+
+
+const pointAtt = {
+          Name: "Wetland and Aquatic Research Center",
+          Owner: "USGS",
+        };
 //creating the point
 const pointGraphic = new Graphic({  
   geometry: point,  
-  symbol: simpleMarkerSymbol  
+  symbol: simpleMarkerSymbol,  
+  attributes: pointAtt,
+          popupTemplate: {
+            // autocasts as new PopupTemplate()
+            title: "{Name}",
+            content: [
+              {
+                type: "fields",
+                fieldInfos: [
+                  {
+                    fieldName: "Name"
+                  },
+                  {
+                    fieldName: "Owner"
+                  }
+                ]
+              }
+            ]
+          }
+        });               
 });
 
 //adding the point to the graphics layer
