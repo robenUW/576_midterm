@@ -216,15 +216,16 @@ view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 //define popup for REST service
 const service = {
 "title": "Habitat Cores",
-"content": "This layer represents modeled Intact Habitat Cores, or minimally disturbed natural areas at least 100 acres in size and greater than 200 meters wide."
-
+"content": "<b>EcoRegion:</b> {TNC_EcoregionName } <br> <b>CORE Score (1 High Score):</b> {Score} <br>"
 }
 
 const featureservice = new FeatureLayer({
   // URL to the service
-  url: "https://services.arcgis.com/nGt4QxSblgDfeJn9/arcgis/rest/services/Intact_Habitat_Cores__2023_/FeatureServer"
+  url: "https://services.arcgis.com/nGt4QxSblgDfeJn9/arcgis/rest/services/Intact_Habitat_Cores__2023_/FeatureServer",
+  //adding popup
+  outFields: ["EcoRegion","CORE Score (1 High Score)"],
+  popupTemplate: service
 });
-
 
 //add rest service to map
 map.add(featureservice);
