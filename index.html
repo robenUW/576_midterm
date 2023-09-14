@@ -108,36 +108,27 @@ const simpleMarkerSymbol = {
   }  
 };
 
+//defines popup template properties
+const popupTemplate = {
+  title: "{Name}",
+  content: "{Description}"
+ }
+const attributes = {
+  Name: "Wetland and Aquatic Research Center",
+  Owner: "U.S.G.S",
+  Description: "WARC’s roots are in U.S. Fish and Wildlife Service (USFWS) and National Park Service research units that were brought into the USGS as the Biological Research Division in 1996. "
+  Link: "usgs.gov/centers/wetland-and-aquatic-research-center/we-are-warc" 
+}
 
-const pointAtt = {
-          Name: "Wetland and Aquatic Research Center",
-          Owner: "USGS",
-        };
+
 //creating the point
 const pointGraphic = new Graphic({  
   geometry: point,  
   symbol: simpleMarkerSymbol,  
-  attributes: pointAtt,
-          popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: "{Name}",
-            content: [
-              {
-                type: "fields",
-                fieldInfos: [
-                  {
-                    fieldName: "Name"
-                  },
-                  {
-                    fieldName: "Owner"
-                  }
-                ]
-              }
-            ]
-          }
-        });               
-});
+  attributes: attributes,
+  popupTemplate: popupTemplate
 
+});
 //adding the point to the graphics layer
 graphicsLayer.add(pointGraphic);
 
