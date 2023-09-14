@@ -111,8 +111,29 @@ const simpleMarkerSymbol = {
 //defines popup template properties
 const popupTemplate = {
   title: "{Name}",
-  content: "{Description}"
- }
+  content: [
+    {
+      type: "fields",
+      fieldInfos: [
+        {
+          fieldName: "Name"
+        },
+        {
+          fieldName: "Owner"
+        },
+        {
+          fieldName: "Description"
+        },
+        {
+          fieldName: "Link"
+        }
+      ]
+    }
+  ]
+}
+
+
+
 const attributes = {
   Name: "Wetland and Aquatic Research Center",
   Owner: "U.S.G.S",
