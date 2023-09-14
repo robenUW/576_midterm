@@ -186,7 +186,7 @@ const polygon = {
 //defines polygon style
 const polygonstyle = {
   type: "simple-fill",
-  color: [0, 255, 255]
+  color: [0, 255, 255],
   outline: {
     color:  [102, 0, 0],
     width: 1
@@ -206,6 +206,7 @@ const polygongraphic = new Graphic({
 
 
 //adding the point, line and polygon to the graphics layer
+
 view.graphics.addMany([pointGraphic,polylineGraphic,polygongraphic]);
 
 });
