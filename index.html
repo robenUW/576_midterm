@@ -151,26 +151,35 @@ const pointGraphic = new Graphic({
 
 });
 
-//creating paths with m values
-const path = [  // first path
-[-92.042294,30.204388,5],
-[-92.042762,30.204921,6],
-[-92.033704,30.209235,7],
-[-92.045495,30.224682,8],
-[-92.044309,30.225249,9]
-];
 
-const line = new Polyline({
-  hasZ: false,
-  hasM: true,
-  paths: path,
-  spatialReference: {wkid: 4326}
+//creates line geometry
+const polyline = { 
+  type: "polyline",
+  path: [
+  [-92.042294,30.204388]
+  [-92.042762,30.204921]
+  [-92.033704,30.209235]
+  [-92.045495,30.224682]
+  [-92.044309,30.225249]
+]
+};
+
+//defines line style
+const simpleLineSymbol = {
+  type: "simple-line",
+  color: [0, 255, 255],
+  width: 3
+};
+
+//creates the line 
+const polylineGraphic = new Graphic({
+    geometry: polyline,
+    symbol: simpleLineSymbol
 });
 
-
-//adding the point to the graphics layer
+//adding the point and the line to the graphics layer
 graphicsLayer.add(pointGraphic);
-
+graphicsLayer.add(polylineGraphic);
 });
  </script>
 
