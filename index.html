@@ -30,6 +30,10 @@ require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapG
 "esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon","esri/layers/FeatureLayer"], function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon,FeatureLayer) {
   
 esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
+                     
+
+
+
 const map = new Map({ 
  basemap: "arcgis-imagery" // Basemap layer 
 });
@@ -211,7 +215,7 @@ view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 //define popup for REST service
 const service = {
-"title": "Habitat Cores"
+"title": "Habitat Cores",
 "content": "This layer represents modeled Intact Habitat Cores, or minimally disturbed natural areas at least 100 acres in size and greater than 200 meters wide."
 
 }
