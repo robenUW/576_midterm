@@ -208,14 +208,22 @@ const polygonGraphic = new Graphic({
 view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 
-const SLR = new FeatureLayer({
+
+//define popup for REST service
+const mangrovepopup = {
+"title": "Mangrove Species"
+"content": "Number of mangrove species, by marine ecoregion."
+
+}
+
+const mangrove = new FeatureLayer({
   // URL to the service
-  url: "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/slr_1ft/MapServer"
+  url: "https://cumulus.tnc.org/arcgis/rest/services/Atlas/MarineMaps/MapServer/10"
 });
 
 
 //add rest service to map
-map.add(SLR);
+map.add(mangrove);
 
 });
  </script>
