@@ -210,20 +210,20 @@ view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 
 //define popup for REST service
-const mangrovepopup = {
-"title": "Mangrove Species"
-"content": "Number of mangrove species, by marine ecoregion."
+const service = {
+"title": "Habitat Cores"
+"content": "This layer represents modeled Intact Habitat Cores, or minimally disturbed natural areas at least 100 acres in size and greater than 200 meters wide."
 
 }
 
-const mangrove = new FeatureLayer({
+const featureservice = new FeatureLayer({
   // URL to the service
-  url: "https://cumulus.tnc.org/arcgis/rest/services/Atlas/MarineMaps/MapServer/10"
+  url: "https://services.arcgis.com/nGt4QxSblgDfeJn9/arcgis/rest/services/Intact_Habitat_Cores__2023_/FeatureServer"
 });
 
 
 //add rest service to map
-map.add(mangrove);
+map.add(featureservice);
 
 });
  </script>
