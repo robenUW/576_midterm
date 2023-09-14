@@ -206,8 +206,9 @@ const polygonGraphic = new Graphic({
 
 
 //adding the point, line and polygon to the graphics layer
-
-view.graphics.addMany([pointGraphic,polylineGraphic,polygonGraphic]);
+graphicsLayer.add(pointGraphic);
+graphicsLayer.add(polylineGraphic);
+graphicsLayer.add(polygonGraphic);
 
 });
  </script>
