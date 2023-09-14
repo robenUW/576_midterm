@@ -27,7 +27,7 @@
 <script> 
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate", "esri/widgets/Search","esri/widgets/Expand", "esri/Graphic",  
-"esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon"], function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon) {
+"esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon","esri/layers/FeatureLayer"], function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon,FeatureLayer) {
   
 esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 const map = new Map({ 
@@ -206,6 +206,26 @@ const polygonGraphic = new Graphic({
 
 //adding the point, line and polygon to the graphics layer
 view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
+
+
+const int2030SLR = new FeatureLayer({
+  // URL to the service
+  url: https://tiledimageservices3.arcgis.com/0Fs3HcaFfvzXvm7w/arcgis/rest/services/CMRA_SLR_Inundation_RCP45_Early_2030/ImageServer
+});
+
+
+//add rest service to map
+map.add(into2030SLR);
+
+});
+
+
+
+
+
+
+
+
 });
  </script>
 
