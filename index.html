@@ -251,7 +251,15 @@ const airportRenderer = {
           "height": "18px"
         }
       }
-
+const heliRenderer = {
+    "type": "simple",
+    "symbol": {
+    "type": "picture-marker",
+    "url": "https://robenuw.github.io/576lab2/16809.png",
+    "width": "18px",
+    "height": "18px"
+  }
+}
 
 //const to make the airport labels
 const airportLabels = {
@@ -288,7 +296,19 @@ const airportservice = new FeatureLayer({
   ]
 });
 
-
+const heliservice = new FeatureLayer({
+  // URL to the service
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
+  renderer: heliRenderer,
+  popupTemplate: airportpopup,
+  definitionExpression: "Fac_Type = 'HELIPORT'",
+  labelingInfo: [airportLabels], //adding the labels
+    content: [
+      {
+      outFields: ["*"],
+    }
+  ]
+});
 
 //adding the feature layer to the map
 map.add(featureservice);
