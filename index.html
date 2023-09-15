@@ -233,51 +233,6 @@ const featureservice = new FeatureLayer({
     content: formatContent
   }
 });
-
-// brginning of pasted code
-
-  // Use a function to format the content of the popup
-  function formatContent(event) {
-    const attributes = event.graphic.attributes;
-    let text = "";
-    // Only display the attributes if they exist
-    text += attributes.EcoRegion
-? `EcoRegion: <a href="${attributes.EcoRegion}">` : ``;
-  let textElement = new TextContent({
-            text: text
-          });
-
-    return [textElement];
-  }          
-  
-    map.add(featureservice);
-
- view.when(() => {
-    // Watch for when features are selected
-    reactiveUtils.watch(
-      () => view.popup.selectedFeature,
-      (graphic) => {
-        if (graphic) {
-          // Set the action's visible property to true if the 'website' field value is not null, otherwise set it to false
-          const graphicTemplate = graphic.getEffectivePopupTemplate();
-          graphicTemplate.actions.items[0].visible = graphic.attributes.EcoRegion ? true : false;
-         }
-      }
-    );
-  // Watch for the trigger-action event on the popup
-  reactiveUtils.on(
-    () => view.popup,
-    "trigger-action",
-    (event) => {
-      if (event.action.id === "find-Ecoregion") {
-        const attributes = view.popup.selectedFeature.attributes;
-        // Get the 'website' field attribute
-        const info = attributes.EcoRegion;
-        // Make sure the 'website' field value is not null
-        }
-      }
-    );
-});
 });
 </script>
 
