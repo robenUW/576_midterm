@@ -257,6 +257,7 @@ const airportservice = new FeatureLayer({
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
   renderer: airportRenderer,
   popupTemplate: airportpopup,
+  definitionExpression: "Fac_Type = 'AIRPORT'",
     content: [
       {
       outFields: ["*"],
