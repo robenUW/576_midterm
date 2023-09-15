@@ -220,55 +220,61 @@ const featureservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/nGt4QxSblgDfeJn9/arcgis/rest/services/Intact_Habitat_Cores__2023_/FeatureServer",
   //adding popup
-  popupTemplate: service {
+  popupTemplate: {
     title: "{EcoRegion}",
     outFields: ["EcoRegion","CORE Score", "Stream Length", "Wet Area (Acre)", "% Wetland", "Water (Acres)", "% Water Bodies", "Core Size (Acres)", 
-"Forest Percentage","Shrub/Scrub Percentage", "Grassland/Herbaceous Percentage", "Percentage Wetlands", "Landform Description (Esri)", "Ecologically Relevant Landforms",
-"Soil Variety", "Endemic Species Max Count", "TNC Ecoregio Name"],
+    "Forest Percentage","Shrub/Scrub Percentage", "Grassland/Herbaceous Percentage", "Percentage Wetlands", "Landform Description (Esri)", "Ecologically Relevant Landforms",
+    "Soil Variety", "Endemic Species Max Count", "TNC Ecoregio Name"],
     fieldInfos: [{ fieldName: "EcoRegion"},{fieldName: "CORE Score"}, {fieldName: "Stream Length"}, {fieldName: "Wet Area (Acre)"}, {fieldName:"% Wetland"}, {fieldName: "Water (Acres)"}, {fieldName: "% Water Bodies"}, {fieldName: "Core Size (Acres)"}, 
     {fieldName: "Forest Percentage"},{fieldName:"Shrub/Scrub Percentage"}, {fieldName: "Grassland/Herbaceous Percentage"}, {fieldName: "Percentage Wetlands"}, {fieldName: "Landform Description (Esri)"}, {fieldName: "Ecologically Relevant Landforms"},
-    {fieldName: "Soil Variety"}, {fieldName: "Endemic Species Max Count"}, {fieldName : "TNC Ecoregio Name"}]
-    });
+    {fieldName: "Soil Variety"}, {fieldName: "Endemic Species Max Count"}, {fieldName : "TNC Ecoregio Name"}],
+    actions: [{
+      id :"find-ecoregion",
+      title: "Region info"
+    }],
+    content: formatContent
+  }
+});
 
 // brginning of pasted code
 
   // Use a function to format the content of the popup
-      function formatContent(event) {
-        const attributes = event.graphic.attributes;
-        let text = ""; }
-      map.add(featureLayer);
-      view.when(() => {
-        // Watch for when features are selected
-        reactiveUtils.watch(
-          () => view.popup.selectedFeature,
-          (graphic) => {
-            if (graphic) {
-              // Set the action's visible property to true if the 'website' field value is not null, otherwise set it to false
-              const graphicTemplate = graphic.getEffectivePopupTemplate();
-              graphicTemplate.actions.items[0].visible = graphic.attributes.EcoRegion ? true : false;
-            }
-          }
-        );
-        // Watch for the trigger-action event on the popup
-        reactiveUtils.on(
-          () => view.popup,
-          "trigger-action",
-          (event) => {
-            if (event.action.id === "find-Ecoregion") {
-              const attributes = view.popup.selectedFeature.attributes;
-              // Get the 'website' field attribute
-              const info = attributes.EcoRegion;
-              // Make sure the 'website' field value is not null
-              }
-            }
-        );
-      });
+  function formatContent(event) {
+    const attributes = event.graphic.attributes;
+    let text = "";}
+  });
+
+  map.add(featureLayer);
+  view.when(() => {
+    // Watch for when features are selected
+    reactiveUtils.watch(
+      () => view.popup.selectedFeature,
+      (graphic) => {
+        if (graphic) {
+          // Set the action's visible property to true if the 'website' field value is not null, otherwise set it to false
+          const graphicTemplate = graphic.getEffectivePopupTemplate();
+          graphicTemplate.actions.items[0].visible = graphic.attributes.EcoRegion ? true : false;
+         }
+      }
+    );
+  // Watch for the trigger-action event on the popup
+  reactiveUtils.on(
+    () => view.popup,
+    "trigger-action",
+    (event) => {
+      if (event.action.id === "find-Ecoregion") {
+        const attributes = view.popup.selectedFeature.attributes;
+        // Get the 'website' field attribute
+        const info = attributes.EcoRegion;
+        // Make sure the 'website' field value is not null
+        }
+      }
+    );
 
 map.add(featureservice);
 
-    });
-  </script>
- </script>
+});
+</script>
 
 </head>
 <body>
