@@ -222,9 +222,7 @@ const featureservice = new FeatureLayer({
   //adding popup
   popupTemplate: {
     title: "{EcoRegion}",
-    outFields: ["EcoRegion","CORE Score", "Stream Length", "Wet Area (Acre)", "% Wetland", "Water (Acres)", "% Water Bodies", "Core Size (Acres)", 
-    "Forest Percentage","Shrub/Scrub Percentage", "Grassland/Herbaceous Percentage", "Percentage Wetlands", "Landform Description (Esri)", "Ecologically Relevant Landforms",
-    "Soil Variety", "Endemic Species Max Count", "TNC Ecoregio Name"],
+    outFields: ["*"],
     fieldInfos: [{ fieldName: "EcoRegion"},{fieldName: "CORE Score"}, {fieldName: "Stream Length"}, {fieldName: "Wet Area (Acre)"}, {fieldName:"% Wetland"}, {fieldName: "Water (Acres)"}, {fieldName: "% Water Bodies"}, {fieldName: "Core Size (Acres)"}, 
     {fieldName: "Forest Percentage"},{fieldName:"Shrub/Scrub Percentage"}, {fieldName: "Grassland/Herbaceous Percentage"}, {fieldName: "Percentage Wetlands"}, {fieldName: "Landform Description (Esri)"}, {fieldName: "Ecologically Relevant Landforms"},
     {fieldName: "Soil Variety"}, {fieldName: "Endemic Species Max Count"}, {fieldName : "TNC Ecoregio Name"}],
