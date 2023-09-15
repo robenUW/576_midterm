@@ -256,6 +256,12 @@ const airportservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
   renderer: airportRenderer
+  popupTemplate: airportpopup,
+    content: [
+      {
+      outFields: ["*"],
+    }
+  ]
 });
 
 
