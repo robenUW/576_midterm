@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>DID IT WORK</title>
+  <title>Lab 2</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
@@ -256,15 +256,8 @@ const airportRenderer = {
 const airportservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
-  renderer: airportRenderer,
-  //adding popup
-  popupTemplate: airportpopup,
-    content: [
-      {
-      outFields: ["*"],
-      }
-  ]
-  });
+  renderer: airportRenderer
+});
 
 
 
