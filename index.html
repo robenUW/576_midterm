@@ -241,8 +241,18 @@ const featureservice = new FeatureLayer({
   // Use a function to format the content of the popup
   function formatContent(event) {
     const attributes = event.graphic.attributes;
-    let text = "";}
-  });
+    let text = "";
+    // Only display the attributes if they exist
+    text += attributes.EcoRegion
+? `EcoRegion: <a href="${attributes.EcoRegion}">` : ``;
+  let textElement = new TextContent({
+            text: text
+          });
+
+    return [textElement];
+  }          
+  
+    map.add(featureservice);
 
  view.when(() => {
     // Watch for when features are selected
@@ -269,9 +279,7 @@ const featureservice = new FeatureLayer({
         }
       }
     );
-
-map.add(featureservice);
-
+});
 });
 </script>
 
