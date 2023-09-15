@@ -244,8 +244,7 @@ const featureservice = new FeatureLayer({
     let text = "";}
   });
 
-  map.add(featureservice);
-  view.when(() => {
+ view.when(() => {
     // Watch for when features are selected
     reactiveUtils.watch(
       () => view.popup.selectedFeature,
