@@ -255,7 +255,12 @@ const featureservice = new FeatureLayer({
  view.when(() => {
     // Watch for when features are selected
     reactiveUtils.watch(
-      () => view.popup.selectedFeature
+      () => view.popup.selectedFeature,
+      (graphic) => {
+        if (graphic) {
+          // Set the action's visible property to true if the 'website' field value is not null, otherwise set it to false
+          const graphicTemplate = graphic.getEffectivePopupTemplate();
+          graphicTemplate.actions.items[0].visible = graphic.attributes.EcoRegion ? true : false;
          }
       }
     );
