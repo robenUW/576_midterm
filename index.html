@@ -282,6 +282,26 @@ const airportLabels = {
 };
 
 
+const heliLabels = {
+  symbol: {
+    type: "text",
+    color: "#ffa500",
+    haloColor: "#ffa500",
+    haloSize: "2px",
+    font: {
+      size: "12px",
+      family: "Noto Sans",
+      style: "italic",
+      weight: "normal"
+    }
+  },
+  labelPlacement: "above-center",
+  labelExpressionInfo: {
+    expression: "$feature.Fac_Name"
+  }
+};
+
+
 const airportservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
@@ -302,7 +322,7 @@ const heliservice = new FeatureLayer({
   renderer: heliRenderer,
   popupTemplate: airportpopup,
   definitionExpression: "Fac_Type = 'HELIPORT'",
-  labelingInfo: [airportLabels], //adding the labels
+  labelingInfo: [heliLabels], //adding the labels
     content: [
       {
       outFields: ["*"],
