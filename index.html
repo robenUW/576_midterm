@@ -20,7 +20,9 @@
     height: 100%;  
     width: 100%;  
   }  
-  
+
+
+
 </style> 
 <!--Calling for Map and Mapview modules-->
 
@@ -239,6 +241,15 @@ const airportpopup= {
 "content": "<b>Facility Type:</b> {Fac_Type} <br> <b>Location ID:</b> {Loc_Id} <br> <b> State: </b> {State_Name} <br> City: </b> {City} <br> <b> Facility Name </b>  {Fac_Name} <br>"
 }
 
+const airportRenderer = {
+    "type": "simple",
+    "symbol": {
+      "type": "picture-marker",
+      "url": "https://github.com/robenUW/576lab2/blob/main/outline_flight_takeoff_black_24dp.png",
+      "width": "18px",
+      "height": "18px"
+    }
+  }
 
 const airportservice = new FeatureLayer({
   // URL to the service
@@ -254,15 +265,7 @@ const airportservice = new FeatureLayer({
 
   });
 
-const airportRenderer = {
-    "type": "simple",
-    "symbol": {
-      "type": "picture-marker",
-      "url": "https://github.com/robenUW/576lab2/blob/main/outline_flight_takeoff_black_24dp.png",
-      "width": "18px",
-      "height": "18px"
-    }
-  }
+
 
 //adding the feature layer to the map
 map.add(featureservice);
