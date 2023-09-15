@@ -244,10 +244,10 @@ const airportpopup= {
 const airportRenderer = {
     "type": "simple",
     "symbol": {
-      "type": "picture-marker",
-      "url": "https://github.com/robenUW/576lab2/blob/main/outline_flight_takeoff_black_24dp.png",
-      "width": "18px",
-      "height": "18px"
+    "type": "picture-marker",
+    "url": "https://github.com/robenUW/576lab2/blob/main/outline_flight_takeoff_black_24dp.png",
+    "width": "18px",
+    "height": "18px"
     }
   }
 
@@ -256,13 +256,12 @@ const airportservice = new FeatureLayer({
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
   //adding popup
   popupTemplate: airportpopup,
+  renderer:airportRenderer,
     content: [
       {
       outFields: ["*"],
       }
-  ],
-  renderer:airportRenderer
-
+  ]
   });
 
 
