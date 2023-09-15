@@ -241,9 +241,22 @@ const airportpopup= {
 "content": "<b>Facility Type:</b> {Fac_Type} <br> <b>Location ID:</b> {Loc_Id} <br> <b> State: </b> {State_Name} <br> City: </b> {City} <br> <b> Facility Name </b>  {Fac_Name} <br>"
 }
 
+
+const airportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://github.com/robenUW/576lab2/blob/main/outline_flight_takeoff_black_24dp.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
+
 const airportservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
+  renderer: airportRenderer,
   //adding popup
   popupTemplate: airportpopup,
     content: [
