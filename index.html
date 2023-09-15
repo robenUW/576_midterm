@@ -211,7 +211,7 @@ view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 
 //define popup for REST service
-const popupservice = {
+const corepopup = {
 "title": "Habitat Cores",
 "content": "<b>EcoRegion:</b> {TNC_EcoregionName } <br> <b>CORE Score:</b> {Score} <br> <b> Stream Length: </b> {Strm_Len_Ft} <br> <b> Wet Area (Acre): </b> {Wet_Area_Acres} <br> <b> % Wetland </b>  {WetlandPct} <br> <b> Water (Acres) </b> {Water_Area_Acres} <br> <b> % Water Bodies </b> {WaterBodiesPct} <br> <b> Core Size (Acres) </b> {Acres} <br> <b> Forest Percentage </b> {NLCD_Forested_Pct} <br> <b> Shrub/Scrub Percentage </b> {NLCD_ShrubScrub_Pct} <br> <b> Grassland/Herbaceous Percentage </b> {NLCD_GrasslandHerb_Pct} <br> <b> Percentage Wetlands </b> {NLCD_Pct_WetlandsHerbWet} <br> <b>Landform Description (Esri)</b> {Landform_Maj} <br> <b> Ecologically Relevant Landforms </b> {ERL_SWI } <br> <b> Soil Variety </b> {Soil_Variety} <br> <b> Endemic Species Max Count </b> {EndemicSpeciesMax} <br> <b> TNC Ecoregion Name </b> {TNC_EcoregionName} <br>"
 }
@@ -220,7 +220,7 @@ const featureservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/nGt4QxSblgDfeJn9/arcgis/rest/services/Intact_Habitat_Cores__2023_/FeatureServer",
   //adding popup
-  popupTemplate: popupservice,
+  popupTemplate: corepopup,
     content: [
       {
       outFields: ["*"],
@@ -232,8 +232,30 @@ const featureservice = new FeatureLayer({
     }
   ]
   });
+
+//define popup for REST service
+const airportpopup= {
+"title": "Airports",
+"content": "<b>Facility Type:</b> {Fac_Type} <br> <b>Location ID:</b> {Loc_Id} <br> <b> State: </b> {State_Name} <br> City: </b> {City} <br> <b> Facility Name </b>  {Fac_Name} <br>"
+}
+
+
+const airportservice = new FeatureLayer({
+  // URL to the service
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
+  //adding popup
+  popupTemplate: airportpopup,
+    content: [
+      {
+      outFields: ["*"],
+     
+    }
+  ]
+  });
+
+
 //adding the feature layer to the map
-map.add(featureservice); 
+map.addMany(featureservice,airportservice);
 });
 </script>
 
