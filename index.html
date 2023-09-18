@@ -60,7 +60,9 @@ const locateBtn = new Locate({
         view.ui.add(locateBtn, {
           position: "top-left"
         });    
-   
+
+        
+
 const searchWidget = new Search({
   view: view
 });
@@ -71,7 +73,7 @@ view.ui.add(searchWidget, {
   index: 2
 });
 
-
+//adds expand to the basemap widget
 const bgExpand = new Expand({
           view: view,
           content: basemapGallery,
@@ -136,8 +138,7 @@ const popupTemplate = {
   ]
 }
 
-
-
+//add attributes to the point created
 const attributes = {
   Name: "Wetland and Aquatic Research Center",
   Owner: "U.S.G.S",
@@ -202,7 +203,6 @@ const fillSymbol = {
 };
 
 //add polygon to new graphic
-
 const polygonGraphic = new Graphic({
   geometry: polygon,
   symbol: fillSymbol
@@ -241,7 +241,7 @@ const airportpopup= {
 "content": "<b>Facility Type:</b> {Fac_Type} <br> <b>Location ID:</b> {Loc_Id} <br> <b> State: </b> {State_Name} <br> City: </b> {City} <br> <b> Facility Name </b>  {Fac_Name} <br>"
 }
 
-
+//creates renderer for airport to use icon
 const airportRenderer = {
         "type": "simple",
         "symbol": {
@@ -251,6 +251,8 @@ const airportRenderer = {
           "height": "18px"
         }
       }
+
+//creates renderer for helipads to use icon      
 const heliRenderer = {
     "type": "simple",
     "symbol": {
@@ -260,7 +262,7 @@ const heliRenderer = {
     "height": "25px"
   }
 }
-
+//creates renderer for editable icons to use icon
 const myvisitrenderer = {
     "type": "simple",
     "symbol": {
@@ -291,7 +293,7 @@ const airportLabels = {
   }
 };
 
-
+//const to make the helipad labels
 const heliLabels = {
   symbol: {
     type: "text",
@@ -311,6 +313,7 @@ const heliLabels = {
   }
 };
 
+//const to make the new editable layer labels
 const visitLabels = {
   symbol: {
     type: "text",
@@ -330,7 +333,7 @@ const visitLabels = {
   }
 };
 
-
+// adds the service for airports
 const airportservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
@@ -344,7 +347,7 @@ const airportservice = new FeatureLayer({
     }
   ]
 });
-
+//filters the airport service to show only helipads
 const heliservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
@@ -372,7 +375,6 @@ const myvisits = new FeatureLayer({
     }
   ]
 });
-
 
 
 //adding the feature layer to the map
@@ -426,12 +428,13 @@ const lgExpand = new Expand({
 
         view.ui.add(lgExpand, "bottom-right");
 
+
+//expands editor widget
 const editExpand = new Expand({
   view: view,
   content: editor,
 });
 
-// close the expand whenever a basemap is selected
 editor.watch("activeEditor", () => {
   const mobileSize3 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
 
@@ -444,7 +447,7 @@ view.ui.add(editExpand, "top-right");
 
 
 
-//adding the feature layer to the map
+//adding the feature layers to the map
 map.add(featureservice);
 map.add(airportservice); 
 map.add(heliservice);
