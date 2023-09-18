@@ -396,7 +396,7 @@ view.ui.add(editor, "top-right");
 
 
 // adds legend widget
-const legend = new Legend({
+const legend1 = new Legend({
   view: view,
   icon: "Legend",
   label: "Lab 3 Legend",
@@ -415,12 +415,12 @@ const legend = new Legend({
 
 const lgExpand = new Expand({
           view: view,
-          content: legend,
+          content: legend1,
           expandIcon: "legend",
         });
 
         // close the expand whenever a basemap is selected
-        legend.watch("activeLegend", () => {
+        legend1.watch("activeLegend", () => {
           const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
 
           if (mobileSize) {
