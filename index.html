@@ -393,10 +393,23 @@ const editor = new Editor({
 // Add the widget to the view
 view.ui.add(editor, "top-right");
 
-const legend = new Legend({
-  view: view
-});
 
+// adds legend widget
+const legend = new Legend({
+  view: view,
+  label: "Lab 3 Legend",
+  layerInfos:[{
+    layer:airportservice,
+    title: "Airports"}
+    {layer:heliservice,
+    title: "Helipads"}
+    {;ayer:myvisits
+    title: "My Visits"}
+  }]
+});
+ 
+
+// calls legend into map
 view.ui.add(legend, "bottom-right");
 
 
