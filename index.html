@@ -74,7 +74,8 @@ view.ui.add(searchWidget, {
 
 const bgExpand = new Expand({
           view: view,
-          content: basemapGallery
+          content: basemapGallery,
+          collapseIcon: "layer-basemap"
         });
 
         // close the expand whenever a basemap is selected
@@ -414,7 +415,8 @@ const legend = new Legend({
 
 const lgExpand = new Expand({
           view: view,
-          content: legend
+          content: legend,
+          collapseIcon: "legend"
         });
 
         // close the expand whenever a basemap is selected
