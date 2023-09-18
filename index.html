@@ -29,8 +29,8 @@
 <script> 
 
 require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate", "esri/widgets/Search","esri/widgets/Expand", "esri/Graphic",  
-"esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon","esri/layers/FeatureLayer",  "esri/core/reactiveUtils","esri/popup/content/TextContent", "esri/renderers/SimpleRenderer","esri/symbols/PictureMarkerSymbol","esri/widgets/Editor","esri/widgets/Legend","esri/calcite-ui-icons"],
-function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon,FeatureLayer,reactiveUtils, TextContent,SimpleRenderer,PictureMarkerSymbol,Editor,Legend,basemap,legend) {
+"esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon","esri/layers/FeatureLayer",  "esri/core/reactiveUtils","esri/popup/content/TextContent", "esri/renderers/SimpleRenderer","esri/symbols/PictureMarkerSymbol","esri/widgets/Editor","esri/widgets/Legend"],
+function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon,FeatureLayer,reactiveUtils, TextContent,SimpleRenderer,PictureMarkerSymbol,Editor,Legend) {
   
 esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
 
@@ -75,7 +75,6 @@ view.ui.add(searchWidget, {
 const bgExpand = new Expand({
           view: view,
           content: basemapGallery,
-          expandIcon: "basemap"
         });
 
         // close the expand whenever a basemap is selected
@@ -396,7 +395,7 @@ view.ui.add(editor, "top-right");
 
 
 // adds legend widget
-const legend1 = new Legend({
+const legend = new Legend({
   view: view,
   icon: "Legend",
   label: "Lab 3 Legend",
@@ -415,12 +414,12 @@ const legend1 = new Legend({
 
 const lgExpand = new Expand({
           view: view,
-          content: legend1,
+          content: legend,
           expandIcon: "legend",
         });
 
         // close the expand whenever a basemap is selected
-        legend1.watch("activeLegend", () => {
+        legend.watch("activeLegend", () => {
           const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
 
           if (mobileSize) {
