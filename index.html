@@ -409,6 +409,26 @@ const legend = new Legend({
   
 });
  
+//add expand for legend 
+
+const lgExpand = new Expand({
+          view: view,
+          content: legend
+        });
+
+        // close the expand whenever a basemap is selected
+        legendwatch("activeLegend", () => {
+          const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+
+          if (mobileSize) {
+            lgExpand.collapse();
+          }
+        });
+
+        view.ui.add(lgExpand, "bottom-right");
+
+
+
 
 // calls legend into map
 view.ui.add(legend, "bottom-right");
