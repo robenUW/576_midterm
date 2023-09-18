@@ -417,7 +417,7 @@ const lgExpand = new Expand({
         });
 
         // close the expand whenever a basemap is selected
-        legendwatch("activeLegend", () => {
+        legend.watch("activeLegend", () => {
           const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
 
           if (mobileSize) {
