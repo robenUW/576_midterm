@@ -390,9 +390,6 @@ const editor = new Editor({
  layerInfos: [pointInfos]
  }); // End Editor constructor
 
-// Add the widget to the view
-view.ui.add(editor, "top-right");
-
 
 // adds legend widget
 const legend = new Legend({
@@ -420,15 +417,30 @@ const lgExpand = new Expand({
 
         // close the expand whenever a basemap is selected
         legend.watch("activeLegend", () => {
-          const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+          const mobileSize2 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
 
-          if (mobileSize) {
+          if (mobileSize2) {
             lgExpand.collapse();
           }
         });
 
         view.ui.add(lgExpand, "bottom-right");
 
+const editExpand = new Expand({
+  view: view,
+  content: editor,
+});
+
+// close the expand whenever a basemap is selected
+editor.watch("activeEditor", () => {
+  const mobileSize3 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+
+  if (mobileSize3) {
+    editExpand.collapse();
+  }
+});
+
+view.ui.add(editExpand, "top-right");
 
 
 
