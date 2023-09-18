@@ -261,6 +261,16 @@ const heliRenderer = {
   }
 }
 
+const myvisitrenderer = {
+    "type": "simple",
+    "symbol": {
+    "type": "picture-marker",
+    "url": "https://robenuw.github.io/576lab2/R.jpg",
+    "width": "25px",
+    "height": "25px"
+  }
+}
+
 //const to make the airport labels
 const airportLabels = {
   symbol: {
@@ -301,6 +311,25 @@ const heliLabels = {
   }
 };
 
+const visitLabels = {
+  symbol: {
+    type: "text",
+    color: "#00008b",
+    haloColor: "#add8e6",
+    haloSize: "2px",
+    font: {
+      size: "12px",
+      family: "Arial",
+      style: "italic",
+      weight: "normal"
+    }
+  },
+  labelPlacement: "above-center",
+  labelExpressionInfo: {
+    expression: "$feature.AirportCode"
+  }
+};
+
 
 const airportservice = new FeatureLayer({
   // URL to the service
@@ -333,9 +362,13 @@ const heliservice = new FeatureLayer({
 //adding the const for the feature layer
 const myvisits = new FeatureLayer({
  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Visits/FeatureServer",
- 
+ renderer: myvisitrenderer,
  //adding the popup here
  outFields: ["AirportCode"],
+ labelingInfo: [visitLabels], //adding the labels
+    content: [
+      {
+      outFields: ["*"],
 
 });
 
