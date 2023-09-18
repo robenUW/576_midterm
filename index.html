@@ -398,14 +398,13 @@ view.ui.add(editor, "top-right");
 const legend = new Legend({
   view: view,
   label: "Lab 3 Legend",
-  layerInfos:[{
-    layer:airportservice,
-    title: "Airports"}
-    {layer:heliservice,
-    title: "Helipads"}
-    {;ayer:myvisits
-    title: "My Visits"}
-  }]
+  layerInfos:
+  [{layer:airportservice,title: "Airports"},
+  {layer:heliservice,
+    title: "Helipads"},
+    {layer:myvisits,
+    title: "My Visits"}]
+  
 });
  
 
