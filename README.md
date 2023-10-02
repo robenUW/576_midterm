@@ -1,2 +1,2 @@
-# 576lab3
-lab 3
+# 576_midterm
+midterm_project
