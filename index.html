@@ -7,8 +7,8 @@
   <meta name="description" content="" />
 
 <!----Calls for arcgis JS file and CSS library per lab 1 instructions-->
-<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
-<script src="https://js.arcgis.com/4.25/"></script>
+<link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.27/"></script>
 
 <!---css to make full screen map-->
 <style>  
@@ -455,6 +455,7 @@ view.ui.add(editExpand, "top-right");
            // Add widget to the top right corner of the view
 const layerList = new LayerList({
     view: view,
+    icon: "map-contents"
   // executes for each ListItem in the LayerList
 });
 
@@ -462,7 +463,7 @@ const layerList = new LayerList({
 const listexpand = new Expand({
   view: view,
   content: layerList,
-  expandIcon: "map-contents"
+  icon: "map-contents"
 });
 
 
