@@ -452,10 +452,9 @@ view.ui.add(editExpand, "top-right");
 
 
 
-view.when(() => {
            // Add widget to the top right corner of the view
- const layerList = new LayerList({
-  view: view,
+const layerList = new LayerList({
+    view: view,
   // executes for each ListItem in the LayerList
   listItemCreatedFunction: defineActions
 });
@@ -506,7 +505,7 @@ async function defineActions(event) {
 
 
 view.ui.add(layerList, "top-right")
-});
+
 
 //adding the feature layers to the map
 map.add(featureservice);
