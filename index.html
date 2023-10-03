@@ -444,7 +444,15 @@ editor.watch("activeEditor", () => {
 
 view.ui.add(editExpand, "top-right");
 
+view.when(() => {
+          const layerList = new LayerList({
+            view: view
+          });
 
+          // Add widget to the top right corner of the view
+          view.ui.add(layerList, "top-right");
+        });
+      
 
 
 //adding the feature layers to the map
