@@ -220,11 +220,8 @@ const legend = new Legend({
   icon: "Legend",
   label: "Lab 3 Legend",
   layerInfos:
-  [{layer:airportservice,title: "Airports"},
-  {layer:heliservice,
-    title: "Helipads"},
-    {layer:myvisits,
-    title: "My Visits"},
+  {layer:myvisits,
+  title: "My Visits"},
   {layer: featureservice,
   title:  "Intact Habitat Cores (2023)"}]
   
@@ -290,8 +287,6 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.add(featureservice);
-map.add(airportservice); 
-map.add(heliservice);
 map.add(projectservice);
 });
 </script>
