@@ -50,7 +50,6 @@ container: "viewDiv" // Div element
 const basemapGallery = new BasemapGallery({
   view: view
 });
-
     
 const locateBtn = new Locate({
           view: view
@@ -62,7 +61,6 @@ const locateBtn = new Locate({
         });    
 
         
-
 const searchWidget = new Search({
   view: view
 });
@@ -114,103 +112,6 @@ const simpleMarkerSymbol = {
   }  
 };
 
-//defines popup template properties
-const popupTemplate = {
-  title: "{Name}",
-  content: [
-    {
-      type: "fields",
-      fieldInfos: [
-        {
-          fieldName: "Name"
-        },
-        {
-          fieldName: "Owner"
-        },
-        {
-          fieldName: "Description"
-        },
-        {
-          fieldName: "Link"
-        }
-      ]
-    }
-  ]
-}
-
-//add attributes to the point created
-const attributes = {
-  Name: "Wetland and Aquatic Research Center",
-  Owner: "U.S.G.S",
-  Description: "WARC’s roots are in U.S. Fish and Wildlife Service (USFWS) and National Park Service research units that were brought into the USGS as the Biological Research Division in 1996.",
-  Link: "usgs.gov/centers/wetland-and-aquatic-research-center/we-are-warc" 
-}
-
-
-//creating the point
-const pointGraphic = new Graphic({  
-  geometry: point,  
-  symbol: simpleMarkerSymbol,  
-  attributes: attributes,
-  popupTemplate: popupTemplate
-
-});
-
-
-//creates line geometry
-const polyline = { 
-  type: "polyline",
-  paths: [
-  [-92.042294,30.204388],
-  [-92.042762,30.204921],
-  [-92.033704,30.209235],
-  [-92.045495,30.224682],
-  [-92.044309,30.225249]]
-};
-
-//defines line style
-const simpleLineSymbol = {
-  type: "simple-line",
-  color: [0, 255, 255],
-  width: 3
-};
-
-//creates the line 
-const polylineGraphic = new Graphic({
-    geometry: polyline,
-    symbol: simpleLineSymbol
-});
-
-
-//creates polygon
-const polygon = {
-  type: "polygon",
-  rings: 
-  [[-92.040902, 30.204296],
-  [-92.042770, 30.203348],
-  [-92.039832, 30.199865],
-  [-92.037446, 30.200740]]
-};
-
-//defines polygon style
-const fillSymbol = {
-  type: "simple-fill",
-  color: [0, 255, 255,0.8],
-  outline: {
-    color:  [102, 0, 0],
-    width: 1
-  }
-};
-
-//add polygon to new graphic
-const polygonGraphic = new Graphic({
-  geometry: polygon,
-  symbol: fillSymbol
-});
-
-//adding the point, line and polygon to the graphics layer
-view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
-
 
 //define popup for REST service
 const bminputs = {
@@ -235,24 +136,16 @@ const featureservice = new FeatureLayer({
     {fieldName: "Value"}
     ]}]
 });
-//adds renderer for project polygon
-const projectrenderer = {
-  "type": "simple",
-  "symbol": {
-  "type": "picture-marker",
-  "url": "https://robenuw.github.io/576lab3/outline_flight_black_24dp.png",
-  "width": "18px",
-  "height": "18px"}}
 
 
 //define popup for REST service
 const projectpopup= {
   "title": "Project Ideas",
   "content": "<b>Project Name:</b> {ProjectName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"}
+
 const projectservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Project_Location_Ideas/FeatureServer",
-  renderer: projectenderer,
   popupTemplate: projectpopup,
 });
 
