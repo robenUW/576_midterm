@@ -233,11 +233,30 @@ const featureservice = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]
-  }
-  
-]
+    ]}]
 });
+//adds renderer for project polygon
+const projectrenderer = {
+  "type": "simple",
+  "symbol": {
+  "type": "picture-marker",
+  "url": "https://robenuw.github.io/576lab3/outline_flight_black_24dp.png",
+  "width": "18px",
+  "height": "18px"}}
+
+
+//define popup for REST service
+const projectpopup= {
+  "title": "Project Ideas",
+  "content": "<b>Project Name:</b> {ProjectName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"}
+const projectservice = new FeatureLayer({
+  // URL to the service
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Project_Location_Ideas/FeatureServer",
+  renderer: projectenderer,
+  popupTemplate: projectpopup,
+});
+
+
 
 //define popup for REST service
 const airportpopup= {
@@ -475,6 +494,7 @@ view.ui.add(listexpand, "top-right")
 map.add(featureservice);
 map.add(airportservice); 
 map.add(heliservice);
+map.add(projectservice);
 });
 </script>
 
