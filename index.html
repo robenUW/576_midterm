@@ -139,7 +139,7 @@ const featureservice = new FeatureLayer({
 
 //define popup for REST service
 const projectpopup = {
-  "title": "Project Ideas",
+  "title": "Project Location Ideas",
   "content": "<b>Project Name:</b> {ProjectName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"
 }
 
@@ -199,7 +199,6 @@ const myvisits = new FeatureLayer({
 
 //adding the feature layer to the map
 map.add(myvisits);
-map.add(projectservice);
 
 // Set the point layer's LayerInfo
 const pointInfos = {
@@ -286,6 +285,7 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.add(featureservice);
+map.add(projectservice);
 });
 </script>
 
