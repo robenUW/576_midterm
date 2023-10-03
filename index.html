@@ -41,7 +41,7 @@ const map = new Map({
 const view = new MapView({
 map: map,
 center: [-86.814947,  30.374074], // Longitude, latitude
-zoom: 10, // Zoom level
+zoom: 9, // Zoom level
 container: "viewDiv" // Div element
 });
 
@@ -462,22 +462,6 @@ view.when(() => {
         });
 
 
-        const layerli = new Expand({
-          view: view,
-          content: layerList,
-          expandIcon: "map-contents",
-        });
-
-        // close the expand whenever a basemap is selected
-        legend.watch("activeLayerlist", () => {
-          const mobileSize4 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
-
-          if (mobileSize4) {
-            layerli.collapse();
-          }
-        });
-
-        view.ui.add(layerli, "bottom-right");
 
 
 //adding the feature layers to the map
