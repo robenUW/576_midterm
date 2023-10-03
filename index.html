@@ -450,6 +450,8 @@ editor.watch("activeEditor", () => {
 
 view.ui.add(editExpand, "top-right");
 
+
+
 view.when(() => {
           const layerList = new LayerList({
             view: view
@@ -458,7 +460,24 @@ view.when(() => {
           // Add widget to the top right corner of the view
           view.ui.add(layerList, "top-right");
         });
-      
+
+
+        const layerli = new Expand({
+          view: view,
+          content: layerList,
+          expandIcon: "map-contents",
+        });
+
+        // close the expand whenever a basemap is selected
+        legend.watch("activeLayerlist", () => {
+          const mobileSize4 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+
+          if (mobileSize4) {
+            layerli.collapse();
+          }
+        });
+
+        view.ui.add(layerli, "bottom-right");
 
 
 //adding the feature layers to the map
