@@ -200,7 +200,7 @@ const myvisits = new FeatureLayer({
 
 //adding the feature layer to the map
 map.add(myvisits);
-
+map.add(projectservice);
 
 // Set the point layer's LayerInfo
 const pointInfos = {
@@ -218,9 +218,9 @@ const editor = new Editor({
 const legend = new Legend({
   view: view,
   icon: "Legend",
-  label: "Lab 3 Legend",
+  label: "Legend",
   layerInfos:
-  {layer:myvisits,
+  [{layer:myvisits,
   title: "My Visits"},
   {layer: featureservice,
   title:  "Intact Habitat Cores (2023)"}]
@@ -287,7 +287,6 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.add(featureservice);
-map.add(projectservice);
 });
 </script>
 
