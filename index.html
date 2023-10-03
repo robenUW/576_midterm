@@ -223,15 +223,21 @@ const featureservice = new FeatureLayer({
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Beach_Mouse_Inputs/FeatureServer",
   //adding popup
   popupTemplate: bminputs,
-    content: [
-      {
-      outFields: ["*"],
-      fieldInfos: [
-      {fieldName: "Value"}
-      ]
-    }
-  ]
-  });
+  portalItem: {
+    id: "5d59943d7e3d466bb85d8aa356e6cc73"
+  },
+  layerId: 4,
+  layerId: 5,
+  content: [
+    {
+    outFields: ["*"],
+    fieldInfos: [
+    {fieldName: "Value"}
+    ]
+  }
+  
+]
+});
 
 //define popup for REST service
 const airportpopup= {
