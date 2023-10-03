@@ -456,52 +456,15 @@ view.ui.add(editExpand, "top-right");
 const layerList = new LayerList({
     view: view,
   // executes for each ListItem in the LayerList
-  listItemCreatedFunction: defineActions
 });
 
-async function defineActions(event) {
-  // The event object contains an item property.
-  // is is a ListItem referencing the associated layer
-  // and other properties. You can control the visibility of the
-  // item, its title, and actions using this object.
 
-  const item = event.item;
+const listexpand = new Expand({
+  view: view,
+  content: layerList,
+  expandIcon: "map-contents"
+});
 
-  await item.layer.when();
-
-  if (item.title === "Beach Mouse Inputs") {
-    // An array of objects defining actions to place in the LayerList.
-    // By making this array two-dimensional, you can separate similar
-    // actions into separate groups with a breaking line.
-
-    item.actionsSections = [
-      [
-        {
-          title: "Go to full extent",
-          className: "esri-icon-zoom-out-fixed",
-          id: "full-extent"
-        },
-        {
-          title: "Layer information",
-          className: "esri-icon-description",
-          id: "information"
-        }
-      ],
-      [
-        {
-          title: "Increase opacity",
-          className: "esri-icon-up",
-          id: "increase-opacity"
-        },
-        {
-          title: "Decrease opacity",
-          className: "esri-icon-down",
-          id: "decrease-opacity"
-        }
-      ]
-    ];
-  }
-}
 
 
 view.ui.add(layerList, "top-right")
