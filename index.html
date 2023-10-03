@@ -139,45 +139,18 @@ const featureservice = new FeatureLayer({
 
 
 //define popup for REST service
-const projectpopup= {
+const projectpopup = {
   "title": "Project Ideas",
-  "content": "<b>Project Name:</b> {ProjectName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"}
+  "content": "<b>Project Name:</b> {ProjectName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"
+}
 
 const projectservice = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Project_Location_Ideas/FeatureServer",
   popupTemplate: projectpopup,
-});
+})
 
 
-
-//define popup for REST service
-const airportpopup= {
-"title": "Airports",
-"content": "<b>Facility Type:</b> {Fac_Type} <br> <b>Location ID:</b> {Loc_Id} <br> <b> State: </b> {State_Name} <br> City: </b> {City} <br> <b> Facility Name </b>  {Fac_Name} <br>"
-}
-
-//creates renderer for airport to use icon
-const airportRenderer = {
-        "type": "simple",
-        "symbol": {
-          "type": "picture-marker",
-          "url": "https://robenuw.github.io/576lab3/outline_flight_black_24dp.png",
-          "width": "18px",
-          "height": "18px"
-        }
-      }
-
-//creates renderer for helipads to use icon      
-const heliRenderer = {
-    "type": "simple",
-    "symbol": {
-    "type": "picture-marker",
-    "url": "https://robenuw.github.io/576lab3/16809.png",
-    "width": "25px",
-    "height": "25px"
-  }
-}
 //creates renderer for editable icons to use icon
 const myvisitrenderer = {
     "type": "simple",
@@ -188,46 +161,6 @@ const myvisitrenderer = {
     "height": "25px"
   }
 }
-
-//const to make the airport labels
-const airportLabels = {
-  symbol: {
-    type: "text",
-    color: "#FFFFFF",
-    haloColor: "#5E8D74",
-    haloSize: "2px",
-    font: {
-      size: "12px",
-      family: "Noto Sans",
-      style: "italic",
-      weight: "normal"
-    }
-  },
-  labelPlacement: "above-center",
-  labelExpressionInfo: {
-    expression: "$feature.Fac_Name"
-  }
-};
-
-//const to make the helipad labels
-const heliLabels = {
-  symbol: {
-    type: "text",
-    color: "#FFFF00",
-    haloColor: "#ffa500",
-    haloSize: "2px",
-    font: {
-      size: "12px",
-      family: "Noto Sans",
-      style: "italic",
-      weight: "normal"
-    }
-  },
-  labelPlacement: "above-center",
-  labelExpressionInfo: {
-    expression: "$feature.Fac_Name"
-  }
-};
 
 //const to make the new editable layer labels
 const visitLabels = {
@@ -249,34 +182,6 @@ const visitLabels = {
   }
 };
 
-// adds the service for airports
-const airportservice = new FeatureLayer({
-  // URL to the service
-  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
-  renderer: airportRenderer,
-  popupTemplate: airportpopup,
-  definitionExpression: "Fac_Type = 'AIRPORT'",
-  labelingInfo: [airportLabels], //adding the labels
-    content: [
-      {
-      outFields: ["*"],
-    }
-  ]
-});
-//filters the airport service to show only helipads
-const heliservice = new FeatureLayer({
-  // URL to the service
-  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_VLRLab2/FeatureServer",
-  renderer: heliRenderer,
-  popupTemplate: airportpopup,
-  definitionExpression: "Fac_Type = 'HELIPORT'",
-  labelingInfo: [heliLabels], //adding the labels
-    content: [
-      {
-      outFields: ["*"],
-    }
-  ]
-});
 
 //adding the const for the feature layer
 const myvisits = new FeatureLayer({
