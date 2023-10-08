@@ -293,15 +293,6 @@ view.when(() => {
             switch (layer.geometryType) {
               case "polygon":
                 console.log(layer.title + ": Polygon");
-                break;
-              case "polyline":
-                console.log(layer.title + ": Line");
-                break;
-              case "point":
-                console.log(layer.title + ": Point");
-                break;
-              default:
-                console.log("Other");
             }
           }
         });
