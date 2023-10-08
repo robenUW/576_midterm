@@ -284,8 +284,29 @@ view.ui.add(listexpand, "top-right")
 
 
 //adding the feature layers to the map
-map.add(featureservice);
-map.add(projectservice);
+map.addMany([featureservice,projectservice]);
+
+view.when(() => {
+        console.log("Loaded");
+        view.map.layers.forEach((layer) => {
+          if (layer.type == 'feature') {
+            switch (layer.geometryType) {
+              case "polygon":
+                console.log(layer.title + ": Polygon");
+                break;
+              case "polyline":
+                console.log(layer.title + ": Line");
+                break;
+              case "point":
+                console.log(layer.title + ": Point");
+                break;
+              default:
+                console.log("Other");
+            }
+          }
+        });
+      });
+
 });
 </script>
 
