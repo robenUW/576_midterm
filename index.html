@@ -125,6 +125,10 @@ const bpupopup = {
 "content": "<b>BPU Name:</b> {BPU} <br>"
 }
 
+const secaspopup = {
+"title": "SECAS Blueprint Subregion",
+"content": "<b>Subregion:</b> {SubRgn} <br>"
+}
 
 const catca = new FeatureLayer({
   // URL to the service
@@ -326,6 +330,18 @@ const bpu = new FeatureLayer({
     ]}]
 });
 
+const secas = new FeatureLayer({
+  // URL to the service
+  url: "https://services.arcgis.com/QVENGdaPbd4LUkLV/ArcGIS/rest/services/Base_Blueprint_SubRegions/FeatureServer/",
+  //adding popup
+  popupTemplate: secaspopup,
+  content: [
+    {
+    outFields: ["*"],
+    fieldInfos: [
+    {fieldName: "SubRgn"}
+    ]}]
+});
 
 //define popup for REST service
 const projectpopup = {
@@ -436,7 +452,7 @@ view.ui.add(listexpand, "top-right")
 
 
 //adding the feature layers to the map
-map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu]);
+map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu,secas]);
 
 });
 </script>
