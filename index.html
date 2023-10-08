@@ -113,11 +113,18 @@ const simpleMarkerSymbol = {
 };
 
 
-//define popup for REST service
+//define popup for bminputs service
 const bminputs = {
 "title": "Beach Mouse Input Layers",
 "content": "<b>Values:</b> {value} <br>"
 }
+
+
+const bpupopup = {
+"title": "Biological Planning Units",
+"content": "<b>BPU Name:</b> {BPU} <br>"
+}
+
 
 const catca = new FeatureLayer({
   // URL to the service
@@ -306,6 +313,18 @@ const subsp = new FeatureLayer({
     ]}]
 });
 
+const bpu = new FeatureLayer({
+  // URL to the service
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Biological_Planning_Units_and_Aquatic_Extensions_for_the_Gulf_Coast/FeatureServer",
+  //adding popup
+  popupTemplate: bpupopup,
+  content: [
+    {
+    outFields: ["*"],
+    fieldInfos: [
+    {fieldName: "BPU"}
+    ]}]
+});
 
 
 //define popup for REST service
@@ -333,7 +352,9 @@ const legend = new Legend({
   icon: "Legend",
   label: "Legend",
   layerInfos:
-  [{layer: catca,
+  [{layer: bpu,
+  title: "Biological Planning Units"},
+  {layer: catca,
   title:  "Cat Capture"},
   {layer: crithab,
   title:  "Critical Habitat"},
@@ -355,8 +376,6 @@ const legend = new Legend({
   title:  "Slope"},
   {layer: subsp,
   title:  "Sub Species"}]
-
-
   });
  
 //add expand for legend 
@@ -417,7 +436,7 @@ view.ui.add(listexpand, "top-right")
 
 
 //adding the feature layers to the map
-map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice]);
+map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu]);
 
 });
 </script>
