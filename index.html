@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Lab 3</title>
+  <title>Midterm Project</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
@@ -128,6 +128,8 @@ const featureservice = new FeatureLayer({
     id: "5d59943d7e3d466bb85d8aa356e6cc73"
   },
   layerId: 4,
+  layerId: 5,
+  layerId:0,
   content: [
     {
     outFields: ["*"],
@@ -221,7 +223,7 @@ const legend = new Legend({
   [{layer:myvisits,
   title: "My Visits"},
   {layer: featureservice,
-  title:  "Intact Habitat Cores (2023)"}]
+  title:  "Beach Mouse Input Layers"}]
   
 });
  
@@ -285,18 +287,6 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.addMany([featureservice,projectservice]);
-
-view.when(() => {
-        console.log("Loaded");
-        view.map.layers.forEach((layer) => {
-          if (layer.type == 'feature') {
-            switch (layer.geometryType) {
-              case "polygon":
-                console.log(layer.title + ": Polygon");
-            }
-          }
-        });
-      });
 
 });
 </script>
