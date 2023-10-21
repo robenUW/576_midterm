@@ -359,9 +359,6 @@ const bpu = new FeatureLayer({
   ]
 });
 
-//turn off bpu feature layer by default
-bpu.hide();
-
 // adds the SECAS subregion feature service
 const secas = new FeatureLayer({
   // URL to the service
@@ -481,6 +478,9 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu,secas]);
+
+//turn off bpu feature layer by default
+bpu.hide();
 
 });
 </script>
