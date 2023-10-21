@@ -477,7 +477,10 @@ const listexpand = new Expand({
 view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
-map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu.hide(),secas]);
+map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu,secas]);
+
+// The bpu layer is no longer visible in the view
+bpu.visible = false;
 
 });
 </script>
