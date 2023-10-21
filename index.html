@@ -359,6 +359,9 @@ const bpu = new FeatureLayer({
   ]
 });
 
+//turn off bpu feature layer by default
+bpu.hide();
+
 // adds the SECAS subregion feature service
 const secas = new FeatureLayer({
   // URL to the service
