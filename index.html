@@ -20,21 +20,21 @@
     height: 100%;  
     width: 100%;  
   }  
-
-
 </style> 
 
-
 <script> 
-
 // calls the required modules used in this map
 
-require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate", "esri/widgets/Search","esri/widgets/Expand", "esri/Graphic",  
-"esri/layers/GraphicsLayer","esri/geometry/Point","esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon","esri/layers/FeatureLayer",  "esri/core/reactiveUtils","esri/popup/content/TextContent", "esri/renderers/SimpleRenderer","esri/symbols/PictureMarkerSymbol","esri/widgets/Editor","esri/widgets/Legend","esri/widgets/LayerList"],
-function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,PopupTemplate,Polyline,Polygon,FeatureLayer,reactiveUtils, TextContent,SimpleRenderer,PictureMarkerSymbol,Editor,Legend,LayerList) {
+require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/widgets/Locate",
+  "esri/widgets/Search","esri/widgets/Expand", "esri/Graphic", "esri/layers/GraphicsLayer","esri/geometry/Point",
+  "esri/symbols/SimpleMarkerSymbol","esri/PopupTemplate","esri/geometry/Polyline","esri/geometry/Polygon",
+  "esri/layers/FeatureLayer",  "esri/core/reactiveUtils","esri/popup/content/TextContent", "esri/renderers/SimpleRenderer",
+  "esri/symbols/PictureMarkerSymbol","esri/widgets/Editor","esri/widgets/Legend","esri/widgets/LayerList"],
+    function (esriConfig, Map, MapView,BasemapGallery,Locate,Search,Expand,Graphic,GraphicsLayer,Point,SimpleMarkerSymbol,
+      PopupTemplate,Polyline,Polygon,FeatureLayer,reactiveUtils, TextContent,SimpleRenderer,PictureMarkerSymbol,Editor,Legend,LayerList) {
  
-  // brings in my API 
-esriConfig.apiKey = "AAPKe25646307673446889b5a9c8e433dbd9RUONhu0G0j2uuWyYnq7Ocn8NTpfkWTTsgyAcMmgDmQzorADXUER36WiN9p7mq3FU" 
+// brings in my API 
+esriConfig.apiKey = "AAPK4fd83155c6f74dbaba989ef8d65a62e0HkzLPHOm66zEOTAE2eQ4meauWP-KHE_Axm9cNMA2Yz9b6Ovb6U5E3Wil66l4KCe_";
 
 // creates the map used for the site
 const map = new Map({ 
@@ -43,33 +43,32 @@ const map = new Map({
 
 //creates the map view, and zooms to the prespective area
 const view = new MapView({
-map: map,
-center: [-86.814947,  30.374074], // Longitude, latitude
-zoom: 9, // Zoom level
-container: "viewDiv" // Div element
+  map: map,
+  center: [-86.814947,  30.374074], // Longitude, latitude
+  zoom: 9, // Zoom level
+  container: "viewDiv" // Div element
 });
-
 
 //adds basemap gallery
 const basemapGallery = new BasemapGallery({
   view: view
 });
 
-
 //add in locate user location function
 const locateBtn = new Locate({
-          view: view
-        });
+  view: view
+});
 
-        // Add the locate widget to the top left corner of the view
-        view.ui.add(locateBtn, {
-          position: "top-left"
-        });    
+// Add the locate widget to the top left corner of the view
+  view.ui.add(locateBtn, {
+  position: "top-left"
+});    
 
 // add in search widget        
 const searchWidget = new Search({
   view: view
 });
+
 // Adds the search widget below other elements in
 // the top left corner of the view
 view.ui.add(searchWidget, {
@@ -79,20 +78,19 @@ view.ui.add(searchWidget, {
 
 //adds expand to the basemap widget
 const bgExpand = new Expand({
-          view: view,
-          content: basemapGallery,
-        });
+  view: view,
+  content: basemapGallery,
+});
 
-        // close the expand whenever a basemap is selected
-        basemapGallery.watch("activeBasemap", () => {
-          const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+// close the expand whenever a basemap is selected
+basemapGallery.watch("activeBasemap", () => {
+  const mobileSize = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+    if (mobileSize) {
+      bgExpand.collapse();
+    }
+});
 
-          if (mobileSize) {
-            bgExpand.collapse();
-          }
-        });
-
-        view.ui.add(bgExpand, "top-right");
+view.ui.add(bgExpand, "top-right");
         
 //adds the constructor for the graphics layer; see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
 const graphicsLayer = new GraphicsLayer();  
@@ -104,7 +102,6 @@ const point = { //Create a point
   longitude: -92.044,    //long lat of Stevie Ray Vaughan Statue
   latitude: 30.2250
 };
-
 
 //defines the marker style
 const simpleMarkerSymbol = {  
@@ -118,24 +115,22 @@ const simpleMarkerSymbol = {
   }  
 };
 
-
 //define popup for bminputs service
 const bminputs = {
-"title": "Beach Mouse Input Layers",
-"content": "<b>Values:</b> {value} <br>"
+  "title": "Beach Mouse Input Layers",
+  "content": "<b>Values:</b> {value} <br><br>"
 }
 // defines popup for bpu layer
 const bpupopup = {
-"title": "Biological Planning Units",
-"content": "<b>BPU Name:</b> {BPU} <br>"
+  "title": "Biological Planning Units",
+  "content": "<b>BPU Name:</b> {BPU} <br><br>"
 }
 
 // defines the popup for the SECAS layer
 const secaspopup = {
-"title": "SECAS Blueprint Subregion",
-"content": "<b>Subregion:</b> {SubRgn} <br>"
+  "title": "SECAS Blueprint Subregion",
+  "content": "<b>Subregion:</b> {SubRgn} <br><br>"
 }
-
 
 //adds the cat capture layer from the beach mouse inputs feature service
 const catca = new FeatureLayer({
@@ -152,7 +147,8 @@ const catca = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the critical habitat layer from the beach mouse inputs layer
@@ -170,9 +166,9 @@ const crithab = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
-
 
 //adds the light guidance layer from the beach mouse inputs feature service
 const guide = new FeatureLayer({
@@ -189,7 +185,8 @@ const guide = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the heterogeneity layer from the beach mouse inputs feature service
@@ -210,8 +207,7 @@ const heter = new FeatureLayer({
     ]}]
 });
 
-
-//adds the landcover  layer from the beach mouse inputs feature service
+//adds the landcover layer from the beach mouse inputs feature service
 const lanc = new FeatureLayer({
   // URL to the service
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Beach_Mouse_Inputs/FeatureServer",
@@ -226,7 +222,8 @@ const lanc = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the light layer from the beach mouse inputs feature service
@@ -244,7 +241,8 @@ const light = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the non road developed layer from the beach mouse inputs feature service
@@ -262,7 +260,8 @@ const nrdev = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the neighborhood suitability layer from the beach mouse inputs feature service
@@ -280,7 +279,8 @@ const nsuit = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the protected areas layer from the beach mouse inputs feature service
@@ -298,7 +298,8 @@ const prote = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the slope layer from the beach mouse inputs feature service
@@ -316,7 +317,8 @@ const slope = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the sub species layer from the beach mouse inputs feature service
@@ -334,7 +336,8 @@ const subsp = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "Value"}
-    ]}]
+    ]}
+  ]
 });
 
 //adds the biological planning units feature service
@@ -352,7 +355,8 @@ const bpu = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "BPU"}
-    ]}]
+    ]}
+  ]
 });
 
 // adds the SECAS subregion feature service
@@ -366,13 +370,14 @@ const secas = new FeatureLayer({
     outFields: ["*"],
     fieldInfos: [
     {fieldName: "SubRgn"}
-    ]}]
+    ]}
+  ]
 });
 
 //define popup for project ideas service
 const projectpopup = {
   "title": "Project Location Ideas",
-  "content": "<b>Project Name:</b> {PName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br>"
+  "content": "<b>Project Name:</b> {PName} <br> <b>Creator:</b> {Creator} <br> <b> Start Date: </b> {StartDate} <br> Project End Date: </b> {Enddate} <br><br>"
 }
 
 // adds feature service for project idea service
@@ -382,12 +387,10 @@ const projectservice = new FeatureLayer({
   popupTemplate: projectpopup,
 })
 
-
 // Begin Editor constructor
 const editor = new Editor({
- view: view,
- }); // End Editor constructor
-
+  view: view,
+}); // End Editor constructor
 
 // adds legend widget
 const legend = new Legend({
@@ -395,50 +398,49 @@ const legend = new Legend({
   icon: "Legend",
   label: "Legend",
   layerInfos:
-  [{layer: bpu,
-  title: "Biological Planning Units"},
-  {layer: catca,
-  title:  "Cat Capture"},
-  {layer: crithab,
-  title:  "Critical Habitat"},
-  {layer: guide,
-  title:  "Presence/Absence Light Restrictions"},
-  {layer: heter,
-  title:  "Dune Type Heterogeneity"},
-  {layer: lanc,
-  title:  "Landcover Types"},
-  {layer: light,
-  title:  "Presence/Absence Light"},
-  {layer: nrdev,
-  title:  "Distance (m) to Non-road Development"},
-  {layer: nsuit,
-  title:  "Neighborhood Suitability"},
-  {layer: prote,
-  title:  "Protected Areas"},
-  {layer: slope,
-  title:  "Slope"},
-  {layer: subsp,
-  title:  "Sub Species"}]
-  });
+    [{layer: bpu,
+    title: "Biological Planning Units"},
+    {layer: catca,
+    title:  "Cat Capture"},
+    {layer: crithab,
+    title:  "Critical Habitat"},
+    {layer: guide,
+    title:  "Presence/Absence Light Restrictions"},
+    {layer: heter,
+    title:  "Dune Type Heterogeneity"},
+    {layer: lanc,
+    title:  "Landcover Types"},
+    {layer: light,
+    title:  "Presence/Absence Light"},
+    {layer: nrdev,
+    title:  "Distance (m) to Non-road Development"},
+    {layer: nsuit,
+    title:  "Neighborhood Suitability"},
+    {layer: prote,
+    title:  "Protected Areas"},
+    {layer: slope,
+    title:  "Slope"},
+    {layer: subsp,
+    title:  "Sub Species"}]
+});
  
 //add expand for legend 
 const lgExpand = new Expand({
-          view: view,
-          content: legend,
-          expandIcon: "legend",
-        });
+  view: view,
+  content: legend,
+  expandIcon: "legend",
+});
 
-        // close the expand whenever a basemap is selected
-        legend.watch("activeLegend", () => {
-          const mobileSize2 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+// close the expand whenever a basemap is selected
+legend.watch("activeLegend", () => {
+  const mobileSize2 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
+    if (mobileSize2) {
+      lgExpand.collapse();
+    }
+});
 
-          if (mobileSize2) {
-            lgExpand.collapse();
-          }
-        });
 //adds legend to map
-        view.ui.add(lgExpand, "bottom-right");
-
+view.ui.add(lgExpand, "bottom-right");
 
 //expands editor widget
 const editExpand = new Expand({
@@ -449,21 +451,18 @@ const editExpand = new Expand({
 
 editor.watch("activeEditor", () => {
   const mobileSize3 = view.heightBreakpoint === "xsmall" || view.widthBreakpoint === "xsmall";
-
-  if (mobileSize3) {
-    editExpand.collapse();
-  }
+    if (mobileSize3) {
+      editExpand.collapse();
+    }
 });
 
 //add editor widget to map
 view.ui.add(editExpand, "top-right");
 
-
-
 // Add widget to the top right corner of the view
 const layerList = new LayerList({
-    view: view,
-    icon: "map-contents"
+  view: view,
+  icon: "map-contents"
   // executes for each ListItem in the LayerList
 });
 
@@ -479,6 +478,9 @@ view.ui.add(listexpand, "top-right")
 
 //adding the feature layers to the map
 map.addMany([catca,crithab,guide,heter,lanc,light,nrdev,nsuit,prote,slope,subsp,projectservice,bpu,secas]);
+
+// have bpu layer turned off by default
+bpu.visible = false;
 
 });
 </script>
