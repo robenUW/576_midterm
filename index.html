@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <title>Midterm Project</title>
+  <link rel="icon" type="image/x-icon" href="https://robenuw.github.io/576_midterm/USGS_logo.png"><!--Could be useful for a USGS associated project-->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="" />
+  <meta name="description" content="Geog 576 Midterm" /> <!-- Or a description of the project -->
+  <meta name="author" content="Virginia Robenski"> <!--Good to include for websites in general-->
+
 
 <!----Calls for arcgis JS file and CSS library per lab 1 instructions-->
 <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css">
@@ -19,7 +22,13 @@
     margin: 0;  
     height: 100%;  
     width: 100%;  
-  }  
+  }
+#about {
+    padding: 10px;
+    background-color: #eeeeee;
+    width: 300px;
+    color: black;
+  }
 
 
 </style> 
@@ -49,6 +58,20 @@ zoom: 9, // Zoom level
 container: "viewDiv" // Div element
 });
 
+// Create instructions in an about element, using Expand
+// Format the div with HTML and can call HTML style elements
+const about = document.createElement("div");
+about.id = "about";
+about.innerHTML =
+  "This website allows the user to...</br></br>Click one these widgets to do... This will do...</br></br>These layers are editable...<br><br>Look at this website to learn more about the USGS project! <a href='https://www.usgs.gov/index.php/centers/wetland-and-aquatic-research-center/science/biological-objectives-gulf-coast-biological#:~:text=The%20BPUs%20and%20population%20objectives%20are%20used%20by' target='_blank'>Project Title</a>";
+
+view.ui.add(new Expand({
+    expandIcon: "question",
+    expandTooltip: "Expand About",
+    view: view,
+    content: about,
+  }), "top-left"
+);
 
 //adds basemap gallery
 const basemapGallery = new BasemapGallery({
@@ -81,6 +104,7 @@ view.ui.add(searchWidget, {
 const bgExpand = new Expand({
           view: view,
           content: basemapGallery,
+          expandTooltip: "Expand Basemap Gallery"
         });
 
         // close the expand whenever a basemap is selected
@@ -426,6 +450,7 @@ const lgExpand = new Expand({
           view: view,
           content: legend,
           expandIcon: "legend",
+          expandTooltip: "Expand Legend"
         });
 
         // close the expand whenever a basemap is selected
@@ -444,7 +469,8 @@ const lgExpand = new Expand({
 const editExpand = new Expand({
   view: view,
   content: editor,
-  expandIcon: "add-in-edit"
+  expandIcon: "add-in-edit",
+  expandTooltip: "Expand Editor"
 });
 
 editor.watch("activeEditor", () => {
@@ -471,7 +497,8 @@ const layerList = new LayerList({
 const listexpand = new Expand({
   view: view,
   content: layerList,
-  icon: "map-contents"
+  icon: "map-contents",
+  expandTooltip: "Expand Layers"
 });
 
 // add layer list with expand feature
